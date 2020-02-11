@@ -16,86 +16,113 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">Navbar</a>
-
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="#">Data Entry</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Search</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
     </div>
 </nav>
-
 <div class="container">
     <div class="d-flex justify-content-center align-items-center">
         <div class="card ">
             <div class="card-header">
                 <div class="card-body">
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="buyer">Buyer</label>
-                                <input required type="text" class="form-control" id="buyer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="buyer">Buyer</label>
+                                    <input required type="text" class="form-control" id="buyer">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="amount">Amount</label>
+                                    <input required type="number" class="form-control" id="amount">
+                                </div>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="amount">Amount</label>
-                                <input required type="number" class="form-control" id="amount">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="items">Items</label>
-                                <input type="text" required id="items" class="form-control">
-                            </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group">
                                 <label for="receipt_id">Receipt ID</label>
                                 <input type="text" id="receipt_id" required class="form-control">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="buyer_email">Email</label>
-                            <input required type="email" class="form-control" id="buyer_email"
-                                   placeholder="Enter Email address here ....">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="text" class="form-control" id="phone"
-                                   placeholder="Phone Number">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="city">City</label>
-                                <input type="text" class="form-control" id="city">
+
+
+                            <div class="form-group">
+                                <label for="buyer_email">Email</label>
+                                <input required type="email" class="form-control" id="buyer_email"
+                                       placeholder="Enter Email address here ....">
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="entry_at">Date</label>
-                                <input type="date" class="form-control" id="entry_at">
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">880</div>
+                                    </div>
+                                    <input type="number" class="form-control" id="phone"
+                                           placeholder="Phone Number">
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="city">City</label>
+                                    <input type="text" class="form-control" id="city">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="entry_at">Date</label>
+                                    <input type="date" class="form-control" id="entry_at">
+                                </div>
+
                             </div>
 
+                            <div class="form-group">
+                                <label for="note">Note</label>
+                                <textarea class="form-control" id="note"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="wrapper">
+                                <div class="form-group">
+                                    <label for="items">Items</label>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <input type="text" name="items[]" required class="form-control">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button class="btn btn-success add_field_button">Add more</button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="note">Note</label>
-                            <textarea class="form-control" id="note"></textarea>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" id="create" class="btn btn-block btn-primary">Create</button>
                         </div>
-                        <button type="button" id="create" class="btn btn-primary">Create</button>
-                    </form>
+
+                    </div>
                 </div>
 
             </div>
@@ -110,59 +137,113 @@
 
 
 <script>
-    /*
 
-      Input fields
+    $(document).ready(function () {
 
-     */
+        var wrapper = $(".wrapper"); //Fields wrapper
+        var add_button = $(".add_field_button"); //Add button ID
 
+        var x = 1; //initlal text box count
+        $(add_button).click(function (e) { //on add input button click
+            e.preventDefault();
 
-    var amount = $('#amount').val();
-    var items = $('#items').val();
+            x++; //text box increment
+            $(wrapper).append('<div style="border:1px solid gray;border-radius: 5px" class="form-group"><input class="form-control" type="text" name="items[]"/><a href="#" class="btn btn-danger btn-sm remove_field">Remove</a></div>'); //add input box
 
-    var buyer_email = $('#buyer_email').val();
-    var phone = $('#phone').val();
-    var city = $('#city').val();
-    var entry_date = $('#entry_at').val();
-    var note = $('#note').val();
+        });
 
-    /*
-    Validate Amount
-     */
+        $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').remove();
+            x--;
+        });
 
-    function checkAmount() {
+        function getItems() {
+            var values = Array.from(
+                document.querySelectorAll(".wrapper input[name='items[]']"), ({value}) => value);
 
-        if (isNaN(amount)) {
-            return alert('Amount must be number');
+            var regExp = /^[a-zA-Z ]*$/;
+
+            /*
+             Check validation for each item . Checking for text only validation
+            */
+            for (var i = 0; i < values.length; i++) {
+                if (!regExp.test(values[i])) {
+                    return alert('Only text allowed. Please check your items name');
+                }
+
+            }
+
+            return values;
         }
 
-    }
 
-    function checkBuyer() {
-        var buyer = $('#buyer').val();
         /*
-        Allow text space  numbers and 20 characters . Special characters  is not allowed
+        Validate Amount
          */
-        var regex = /^[0-9a-zA-Z\_ ]{0,20}$/;
-        if (!regex.test(buyer)) {
-            return alert('Only Text spaces  Numbers and 20 characters allow in Buyer filed');
-        }
-    }
 
-    function checkReceiptID() {
+        function checkAmount() {
+
+            if (isNaN(amount)) {
+                return alert('Amount must be number');
+            }
+
+        }
+
         /*
-        Allow only text
-         */
-        var regex = /^[a-zA-Z ]*$/;
-        var receipt_id = $('#receipt_id').val();
-        if (!regex.test(receipt_id)) {
-            return alert('Only Text allow in receipt id ');
+        Validate buyer
+        */
+
+
+        function checkBuyer() {
+            var buyer = $('#buyer').val();
+            /*
+            Allow text space  numbers and 20 characters . Special characters  is not allowed
+             */
+            var regex = /^[0-9a-zA-Z\_ ]{0,20}$/;
+            if (!regex.test(buyer)) {
+                return alert('Only Text spaces  Numbers and 20 characters allow in Buyer filed');
+            }
         }
-    }
+
+        /*
+        Validate Receipt ID
+        */
+
+        function checkReceiptID() {
+            /*
+            Allow only text
+             */
+            var regex = /^[a-zA-Z ]*$/;
+            var receipt_id = $('#receipt_id').val();
+            if (!regex.test(receipt_id)) {
+                return alert('Only Text allow in receipt id ');
+            }
+        }
+
+        /*
+        Validate Email
+         */
+
+        function checkEmail(){
+            var regExp = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+            if(!regExp.test($('#buyer_email').val())){
+                alert('Email is not valid');
+            }
+        }
+
+        function checkNote(){
+            var regExp = /^\W*(\w+(\W+|$)){1,30}$/;
+            if(!regExp.test($('#note').val())){
+                return alert('Note text not more than 30 words')
+            }
+        }
 
 
-    $('#create').click(function () {
-        checkBuyer();
+        $('#create').click(function () {
+            checkNote();
+        });
+
     });
 
 
