@@ -1,0 +1,12 @@
+{
+  "name": "prappo/mvc",
+  "description": "An OOP MVC task for XpeedStudio",
+  "require": {
+    "illuminate/database": "^6.15"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
