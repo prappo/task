@@ -222,7 +222,7 @@
 
             var regExp = /^[a-zA-Z ]*$/;
 
-            console.log(values.length);
+            // console.log(values.length);
             if (values.length == 1) {
                 if ($('#items').val() == "") {
                     return makeInvalid('#items');
@@ -258,9 +258,6 @@
 
             var values = Array.from(
                 document.querySelectorAll(".wrapper input[name='items[]']"), ({value}) => value);
-
-            var regExp = /^[a-zA-Z ]*$/;
-
 
             return values;
         }
@@ -405,37 +402,36 @@
             checkItems();
 
 
-            // if (validation) {
-            //     $('#msg').html('Please Wait ...');
-            //     $.ajax({
-            //         type: 'POST',
-            //         url: '/store',
-            //         data: {
-            //             'amount': $('#amount').val(),
-            //             'buyer': $('#buyer'),
-            //             'receipt_id': $('#receipt_id'),
-            //             'items': getItems(),
-            //             'buyer_email': $('  #buyer_email').val(),
-            //             'note': $('#note').val(),
-            //             'city': $('#city').val(),
-            //             'phone': getPhoneNumber(),
-            //             'entry_at': $('#entry_at').val()
-            //         },
-            //         success: function (data) {
-            //             if (data == 'success') {
-            //                 msg("Data submitted successfully !");
-            //             }
-            //             eles
-            //             {
-            //                 msg(data);
-            //             }
-            //         },
-            //         error: function (data) {
-            //             msg('Something went wrong');
-            //             console.log(data.responseText);
-            //         }
-            //     })
-            // }
+            if (validation_status) {
+                $('#msg').html('Please Wait ...');
+                $.ajax({
+                    type: 'POST',
+                    url: 'store',
+                    data: {
+                        'amount': $('#amount').val(),
+                        'buyer': $('#buyer').val(),
+                        'receipt_id': $('#receipt_id').val(),
+                        'items': getItems(),
+                        'buyer_email': $('  #buyer_email').val(),
+                        'note': $('#note').val(),
+                        'city': $('#city').val(),
+                        'phone': getPhoneNumber(),
+                        'entry_at': $('#entry_at').val()
+                    },
+                    success: function (data) {
+                        if (data == 'success') {
+                            alert("Data submitted successfully !");
+                            $('#msg').html('<b style="color:green">Data submitted successfully</b>');
+                        } else {
+                            msg(data);
+                        }
+                    },
+                    error: function (data) {
+                        msg('Something went wrong');
+                        console.log(data.responseText);
+                    }
+                })
+            }
 
 
         });
