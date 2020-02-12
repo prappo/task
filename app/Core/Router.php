@@ -52,6 +52,9 @@ class Router
         }
     }
 
+    /*
+     * Handle Get request
+     */
 
     public static function get($url, $callback)
     {
@@ -88,7 +91,9 @@ class Router
 
     }
 
-
+    /*
+     * Handel post requests
+     */
     public static function post($url, $callback)
     {
 

@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+/*
+ * Buyer Model
+ */
 class Buyer extends Model
 {
 

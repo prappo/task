@@ -2,13 +2,10 @@
 
 use App\Controllers\BuyerController;
 use App\Controllers\HomeController;
+use App\Controllers\ReportController;
 use App\Core\Router;
 use App\Core\Render;
 
-
-Router::post('/action', function () {
-    print_r($_POST['name']);
-});
 
 Router::post('/store', function () {
 
@@ -19,11 +16,11 @@ Router::post('/store', function () {
 
 Router::get("/", function () {
 
-    return Render::view("home");
+    HomeController::index();
 });
 
-Router::get('/test', function () {
-    HomeController::index();
+Router::get('/report', function () {
+    ReportController::index();
 });
 
 

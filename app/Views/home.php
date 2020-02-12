@@ -35,7 +35,7 @@
         <ul class="navbar-nav ml-auto">
 
             <li class="nav-item active">
-                <a class="nav-link" href="#">Search</a>
+                <a class="nav-link" href="report">Report</a>
             </li>
         </ul>
     </div>
@@ -101,16 +101,12 @@
 
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-12">
                                 <label for="city">City</label>
                                 <input type="text" class="form-control" id="city">
                                 <div class="invalid-feedback">
                                     Only Text allow
                                 </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="entry_at">Date</label>
-                                <input type="date" class="form-control" id="entry_at">
                             </div>
 
                         </div>
@@ -171,16 +167,41 @@
 <script>
 
     $(document).ready(function () {
-
-        /*
-        Add Dynamic Items
-        */
+        var user_ip = "n/a";
+        $.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?', function (data) {
+            user_ip = JSON.stringify(data['geobytesremoteip'], null, 2).split('"').join("");
+            console.log(user_ip);
+        });
 
         function msg(text) {
 
             $('#msg').html('<b style="color:red">' + text + "</b>");
 
         }
+
+        function setCookie(cookie_name, cookie_value, expire_days) {
+            var d = new Date();
+            d.setTime(d.getTime() + (expire_days * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cookie_name + "=" + cookie_value + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cookie_name) {
+            var name = cookie_name + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
 
         var validation_status = true;
         var wrapper = $(".wrapper");
@@ -403,6 +424,11 @@
 
 
             if (validation_status) {
+                if (getCookie('status') == 'submitted') {
+                    return alert('You already submitted. Please try again after 24 hours')
+                } else {
+                    setCookie('status', 'submitted', 1);
+                }
                 $('#msg').html('Please Wait ...');
                 $.ajax({
                     type: 'POST',
@@ -416,12 +442,13 @@
                         'note': $('#note').val(),
                         'city': $('#city').val(),
                         'phone': getPhoneNumber(),
-                        'entry_at': $('#entry_at').val()
+                        'user_ip': user_ip
                     },
                     success: function (data) {
                         if (data == 'success') {
                             alert("Data submitted successfully !");
                             $('#msg').html('<b style="color:green">Data submitted successfully</b>');
+                            setCookie('submitted');
                         } else {
                             msg(data);
                         }
